@@ -1,0 +1,14 @@
+Control statement : 
+The statement or instructions are used to inform the computer to perform the task when the program is being executed. 
+
+There are four types of control statement : 
+a. Sequential control statement
+b. Conditional control statement 
+   (Decision control statement) 
+c. Switch control statement 
+d. Looping control statement 
+
+a. Sequential control statement
+input ----------- process --------------- output 
+           (Formula implementation)   
+ex : p,r,t     si = (p*r*t)/100           output : si
