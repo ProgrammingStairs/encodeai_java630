@@ -13,3 +13,29 @@ Thread Synchronization can be classified as :
 Here Synchronized block and Synchronized methods are used to achieve object level locking whereas static Synchronization is used to achieve class level locking. 
 
 For achieving class level locking , we needs to make Synchronized method static
+
+output :  [ Andrew ]
+
+class First{
+    void display(){
+        sop("[")
+        sop(name)
+        sop("]")
+    }
+}
+
+First fobj;
+
+Thread th1,th2,th3;
+
+    th1---> fobj;
+        th2---> x;
+            th3---> x;
+
+    th2---> fobj;
+        th1---> x;
+            th3---> x;
+
+    th3---> fobj;
+        th2---> x;
+            th1---> x;
