@@ -1,0 +1,46 @@
+Web Application : Application which runs on the browser and whose execution takes place on the server.
+
+It basically works on client server architecture.
+
+   |---------sends request------->|    
+client	                        server 
+   |<--------gives response-------|
+
+front end----> registration form
+                  |-- name
+		            |-- email, password etc
+
+we need to save registration form data
+	    	|-- database  
+	_______________|______________
+	|                            |
+      RDBMS                         NOSQL
+(Relational Database       (Not only Structured  
+ Management System)          Query language)
+        |                            |
+  structured data          Semi structured | unstructured data
+        |                            |
+ -- MySQL                    -- MongoDB
+ -- MsSQL                    -- Cassendra 
+ -- Oracle                   -- Reddis  
+ -- Postgre                  -- etc
+    etc
+        |                            |
+   ORM Tool                        ODM Tool
+(object relation mapping)    (object document mapping)
+ -- Hibernate (java)            -- Mongoose
+ -- Sequelize (node|express)       etc
+ -- TypeORM
+    etc   
+
+Incase of RDBMS, we store data in tables, whereas in case of NOSQL, we store data in forms of document like {"name":"andrew anderson","age":45}
+
+CLI : (command line interface)
+GUI : (Graphical User Interface)
+
+MySQL : command line client | command prompt (CLI)
+        MySQL Workbench (GUI)
+
+MongoDB : Mongodb shell (CLI)
+          Mongodb Compass (GUI)
+	

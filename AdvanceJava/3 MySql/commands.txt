@@ -1,0 +1,115 @@
+Command line client : 
+Enter password : root (enter)
+
+mysql> 
+
+Command Prompt : 
+C://program files// MySQL // MySQL server // bin 
+on path we need to write cmd and hit enter
+
+command prompt opens with 
+C://program files// MySQL // MySQL server // bin > mysql -uroot -p enter
+> Enter password : root (enter)
+
+mysql> 
+
+Commands : 
+1. show databases;
+2. create database mysql630;
+3. create database mysql6301;
+   drop database mysql6301;
+4. create database if not exists mysql630;
+5. use mysql630;
+6. create table user(uid int(20) not null);
+   drop table user;
+   create table IF NOT EXISTS user(uid int not null,name varchar(45) not null,address varchar(45), percentage double default 0); 
+7. show tables;
+8. desc user;
+   show columns from user; 
+   alter table user add column status1 varchar(34);
+   alter table user add status2 varchar(34) not null;
+   alter table user add status3 varchar(34) not null after address;
+   alter table user add status4 varchar(34) not null first;
+   alter table user modify column status4 varchar(100);
+   alter table user drop column status4;
+   alter table user rename column status2 to status_new; 
+   alter table user rename user_new;
+   desc user_new;
+
+9. create table IF NOT EXISTS user(uid int not null,name varchar(45) not null,address varchar(45), percentage double default 0); 
+
+insert into user(uid,name,address,percentage) values(101,"Andrew Anderson","Indore, Madhya Pradesh",56.67);
+  
+select * from user;
+insert into user values(102,"Jack Jackson","Indore, Madhya Pradesh",98);
+
+// this will not execute
+insert into user values(103,"Peter Parker","Indore, Madhya Pradesh");
+
+insert into user(uid,name,address) values(103,"Mathew Math","Indore, Madhya Pradesh");
+insert into user(uid,name) values(104,"Simon");
+
+alter table user add status varchar(34) not null default 'noname';
+insert into user(uid,name,address) values(106,"Mathew","Indore, Madhya Pradesh");
+
+10. create table citizen(cid int primary key auto_increment,fname varchar(45) not null,lname varchar(45) not null, age int not null, country varchar(45) not null);
+
+11. insert into citizen(fname,lname,age,country) values ("Andrew","Anderson",45,"USA");
+   select * from citizen;
+   insert into citizen(fname,lname,age,country) values ("Peter","Parker",45,"USA"),("Simon","Sim",28,"USA"),("Jack","Jackson",42,"India"),("Mathew","Math",98,"Dubai");
+
+   select cid from citizen;
+   select cid,fname from citizen;
+   select cid,fname,lname from citizen;
+   select cid,fname,lname,age from citizen;
+   select cid,country from citizen;
+
+12. select * from citizen where country='USA';
+ select * from citizen where cid=1;
+
+13. update citizen  set age=18;
+update citizen set age=23 where country='usa';
+update citizen set age=28 where cid=4;
+delete from citizen where age=28;
+delete from citizen;
+truncate table citizen;
+
+14. select cid,fname,lname,age,country from citizen;
+select cid as 'S.NO',fname as 'First Name',lname as 'Last Name',age as Age,country as Country from citizen;
+
+select cid as 'S.NO',concat(fname,' ',lname) as 'First Name',age as Age,country as Country from citizen;
+
+15. select distinct country from citizen;
+select distinct country,fname from citizen;
+select count(distinct country) from citizen;
+select count(distinct country) as 'Unique Countries' from citizen;
+
+16. select * from citizen limit 2;
+select * from citizen limit 2 offset 2;
+
+17. select * from citizen where cid=1 and country='India';
+select * from citizen where cid=1 and country='usa';
+select * from citizen where cid=1 or country='India';
+select * from citizen where not cid=1;
+select * from citizen where not cid=1 and not country="usa";
+
+18. select * from citizen where country in ('usa');
+select * from citizen where country in ('usa','india');
+select * from citizen where 'usa' in (country);
+select * from citizen where country not in ('usa');
+
+19. select * from citizen where age>50;
+select * from citizen where age>=40 and age<=50;
+select * from citizen where age between 40 and 50; 
+
+20. select count(*) from citizen;
+select count(*) as 'No. of Citizens' from citizen;
+select count(age) as 'Age' from citizen;
+select sum(age) as 'Sum of Age' from citizen;
+select avg(age) as 'Avg of Age' from citizen;
+select min(age) as 'Minimum Age' from citizen;
+select max(age) as 'Maximum Age' from citizen;
+
+21. select * from citizen order by country;
+select * from citizen order by country asc;
+select * from citizen order by country desc;
