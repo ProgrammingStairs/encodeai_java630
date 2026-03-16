@@ -101,6 +101,7 @@ select * from citizen where country not in ('usa');
 19. select * from citizen where age>50;
 select * from citizen where age>=40 and age<=50;
 select * from citizen where age between 40 and 50; 
+select * from citizen where age not between 40 and 50; 
 
 20. select count(*) from citizen;
 select count(*) as 'No. of Citizens' from citizen;
@@ -113,3 +114,81 @@ select max(age) as 'Maximum Age' from citizen;
 21. select * from citizen order by country;
 select * from citizen order by country asc;
 select * from citizen order by country desc;
+
+// _ and % are two wildcard characters
+
+22. select * from citizen where country like 'u_';
+select * from citizen where country like 'u__'; // 2 underscore
+select * from citizen where country like 'u___'; // 3 underscore
+select * from citizen where country like 'u%';
+select * from citizen where country like '%a';
+select * from citizen where lname like '%a%';
+
+select * from citizen where fname is null;
+select count(*) as 'Null Entries' from citizen where fname is null;
+select count(*) as 'Not Null Entries' from citizen where fname is not null;
+
+select * from citizen where fname is not null;
+
+select country, count(*) as 'No.Of Citizen' from citizen group by country;
+select country, count(*) as 'No.Of Citizen' from citizen group by country having count(*)>1;
+
+create table user_demo(user_id int not null, pincode int not null, foreign key (user_id) references citizen(cid));  
+
+insert into user_demo(user_id,pincode) values(1,452010);
+insert into user_demo(user_id,pincode) values(2,452011);
+insert into user_demo(user_id,pincode) values(3,452012);
+
+delete from citizen where cid=3; // error
+drop table user_demo;
+
+create table user_demo(user_id int not null, pincode int not null, foreign key (user_id) references citizen(cid) on delete cascade on update cascade);  
+
+insert into user_demo(user_id,pincode) values(1,452010);
+insert into user_demo(user_id,pincode) values(2,452011);
+insert into user_demo(user_id,pincode) values(4,452012);
+
+delete from citizen where cid=4;
+
+select * from citizen where age = (select min(age) from citizen);
+select * from citizen where age > (select min(age) from citizen);
+
+// second highest age
+select max(age) from citizen where age < (select max(age) from citizen);
+
+select * from citizen where age = (select max(age) from citizen where age < (select max(age) from citizen))
+
+Joins : Here in this case we are going to combine rows of multiple tables on the basis of column. 
+
+Inner join(join) : dono table ka common data 
+left outer join :  dono table ka common data + left table ka pura data
+right outer join :  dono table ka common data + right table ka pura data
+full join :  dono table ka common data + dono table ka pura data
+cross join : 
+self join
+
+------------------------
+
+create table customer(cust_id int not null,cust_name varchar(45) not null);
+
+insert into customer(cust_id,cust_name) values(101,"Andrew Anderson"),(102,"Peter Parker"),(103,"Simon Sim"),(104,"Jack Jackson");
+
+select * from customer;
+
+create table orders(order_id int not null,cust_id int not null,amount int not null);
+
+insert into orders(order_id,cust_id,amount) values(1,101,5000),(3,103,7500);
+
+select * from orders;
+
+select customer.cust_id,customer.cust_name, orders.order_id,orders.amount from customer join orders on customer.cust_id = orders.cust_id;
+
+select customer.cust_id,customer.cust_name, orders.order_id,orders.amount from customer inner join orders on customer.cust_id = orders.cust_id;
+
+select customer.cust_id,customer.cust_name, orders.order_id,orders.amount from customer left outer join orders on customer.cust_id = orders.cust_id;
+
+select customer.cust_id,customer.cust_name, orders.order_id,orders.amount from customer left join orders on customer.cust_id = orders.cust_id;
+
+select customer.cust_id,customer.cust_name, orders.order_id,orders.amount from customer right join orders on customer.cust_id = orders.cust_id;
+
+select customer.cust_id,customer.cust_name, orders.order_id,orders.amount from customer cross join orders;
