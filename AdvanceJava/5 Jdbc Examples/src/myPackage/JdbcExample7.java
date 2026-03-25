@@ -9,8 +9,8 @@ public class JdbcExample7 {
 	public static void main(String[] args) {
 		try {
 			Connection con = GetConnection.getConnect();
-			String username="Andrew Anderson";
-			String email="andrew@gmail.com";
+			String username="Peter Parker";
+			String email="peter@gmail.com";
 			String password="12345678";
 			String address="Indore, Madhya Pradesh";
 			
