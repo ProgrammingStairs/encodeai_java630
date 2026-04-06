@@ -46,4 +46,22 @@
   	<url-pattern>/ServletDemo4</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>ServletDemo6</servlet-name>
+	<servlet-class>mypack.ServletDemo6</servlet-class>
+  	<init-param>
+  		<param-name>driver</param-name>
+  		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletDemo6</servlet-name>
+  	<url-pattern>/ServletDemo6</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+  	<param-name>project</param-name>
+  	<param-value>MyAdvanceProject</param-value>
+  </context-param>
+  
 </web-app>
